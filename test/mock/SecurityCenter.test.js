@@ -1,4 +1,5 @@
 import DoorPanel from "../../src/mock/DoorPanel";
+import MockDoorPanel from "../../src/mock/mockDoorPanel";
 import SecurityCenter from "../../src/mock/SecurityCenter";
 
 describe('security center test', () => {
@@ -7,6 +8,10 @@ describe('security center test', () => {
     * */
 
     test('should verify door is closed', () => {
-        expect(true).toBe(false);
+        const mockDoorPanel = new MockDoorPanel();
+        const security = new SecurityCenter(mockDoorPanel);
+        const result = security.switchOn();
+        
+        expect(mockDoorPanel.verifyMockDoorPanelCalled()).toBe(true);
     });
 });
